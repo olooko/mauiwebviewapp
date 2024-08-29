@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Maui.NoSplashTheme" parent="Maui.MainTheme.NoActionBar">
+		<item name="maui_splash">false</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowSplashScreenAnimationDuration">0</item>
+	</style>
+</resources>

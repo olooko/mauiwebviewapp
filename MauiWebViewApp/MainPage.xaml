@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiWebViewApp.MainPage">
 
-    <WebView Source="https://olooko.mycafe24.com/" />
+    <WebView Source="https://dotnet.microsoft.com/apps/maui"  />
 
 </ContentPage>
