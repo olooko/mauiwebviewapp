@@ -23,28 +23,18 @@ namespace MauiWebViewApp
 
         static void SetWindow(Android.Views.Window window)
         {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.R)
-            {
 #pragma warning disable CA1416
-                IWindowInsetsController? wicController = window.InsetsController;
+            IWindowInsetsController? wicController = window.InsetsController;
 
-                window.SetDecorFitsSystemWindows(false);
-                window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+            window.SetDecorFitsSystemWindows(false);
+            window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
 
-                if (wicController != null)
-                {
-                    wicController.Hide(WindowInsets.Type.Ime());
-                    wicController.Hide(WindowInsets.Type.NavigationBars());
-                }
-#pragma warning restore CA1416
-            }
-            else
+            if (wicController != null)
             {
-#pragma warning disable CS0618
-                window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-                window.DecorView.SystemUiVisibility = (StatusBarVisibility)(SystemUiFlags.Fullscreen | SystemUiFlags.HideNavigation | SystemUiFlags.Immersive | SystemUiFlags.ImmersiveSticky | SystemUiFlags.LayoutHideNavigation | SystemUiFlags.LayoutStable | SystemUiFlags.LowProfile);
-#pragma warning restore CS0618
+                wicController.Hide(WindowInsets.Type.Ime());
+                wicController.Hide(WindowInsets.Type.NavigationBars());
             }
+#pragma warning restore CA1416
         }
     }
 }

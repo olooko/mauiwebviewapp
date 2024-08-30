@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using MauiWebViewApp.Views;
+using MauiWebViewApp.ViewModels;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 
 #if WINDOWS
@@ -35,6 +38,7 @@ namespace MauiWebViewApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -86,6 +90,9 @@ namespace MauiWebViewApp
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddTransientWithShellRoute<LoadingPage, LoadingPageViewModel>(nameof(LoadingPage));
+            builder.Services.AddTransientWithShellRoute<MainPage, MainPageViewModel>(nameof(MainPage));
 
             return builder.Build();
         }

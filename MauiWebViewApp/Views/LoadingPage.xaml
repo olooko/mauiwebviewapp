@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pr="clr-namespace:MPowerKit.ProgressRing;assembly=MPowerKit.ProgressRing"
+             xmlns:viewModels="clr-namespace:MauiWebViewApp.ViewModels" 
+             x:DataType="viewModels:LoadingPageViewModel"
+             x:Class="MauiWebViewApp.Views.LoadingPage">
+    <Grid>
+        <pr:ProgressRing HeightRequest="100" WidthRequest="100" Progress="{Binding ProgressValue}" IsIndeterminate="False" Smooth="True" StrokeLineCap="Square" Color="Red" Thickness="7" />
+    </Grid>
+</ContentPage>
