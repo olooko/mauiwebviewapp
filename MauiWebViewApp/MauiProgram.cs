@@ -91,7 +91,7 @@ namespace MauiWebViewApp
             builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransientWithShellRoute<LoadingPage, LoadingPageViewModel>(nameof(LoadingPage));
+            builder.Services.AddTransientWithShellRoute<SplashPage, SplashPageViewModel>(nameof(SplashPage));
             builder.Services.AddTransientWithShellRoute<MainPage, MainPageViewModel>(nameof(MainPage));
 
             return builder.Build();

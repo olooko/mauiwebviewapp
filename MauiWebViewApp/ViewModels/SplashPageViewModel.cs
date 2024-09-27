@@ -1,34 +1,31 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using MauiWebViewApp.Views;
 
 namespace MauiWebViewApp.ViewModels
 {
-    public partial class LoadingPageViewModel : ObservableObject
+    public partial class SplashPageViewModel : ObservableObject
     {
         private const string RELEASES_URL = "https://webview.olooko.xyz/releases";
 
         private const int BUFF_SIZE = 81920;
 
+        private const bool TEST_MODE = false;
+
         [ObservableProperty]
         private double _progressValue;
 
-        public LoadingPageViewModel()
-        {
-#if (ANDROID && RELEASE)
-            UpdateApk();
-#endif
+        public SplashPageViewModel()
+        { 
         }
 
-        private async void UpdateApk()
+        [RelayCommand]
+        private async Task Update()
         {
             HttpResponseMessage response = await (new HttpClient()).GetAsync(string.Format("{0}/version.html", RELEASES_URL));
             var versionString = await response.Content.ReadAsStringAsync();
             
-            if (CompareUpdatingVersion(AppInfo.Current.VersionString, versionString))
+            if (CompareUpdatingVersion(AppInfo.Current.VersionString, versionString) || TEST_MODE)
             {
                 using (HttpClient httpClient = new HttpClient())
                 {
@@ -64,6 +61,7 @@ namespace MauiWebViewApp.ViewModels
                     fileStream.Close();
                     contentStream.Close();
 
+                    /*
                     var file = new Java.IO.File(outputFileName);
                     var context = Android.App.Application.Context;
 
@@ -77,10 +75,12 @@ namespace MauiWebViewApp.ViewModels
                     intent.PutExtra(Android.Content.Intent.ExtraInstallerPackageName, AppInfo.PackageName);
 
                     context.StartActivity(intent);
+                    */
                 }
             }
-        }
 
+            await Shell.Current.GoToAsync(nameof(MainPage));
+        }
 
         private bool CompareUpdatingVersion(string oldVersion, string newVersion)
         {
@@ -109,6 +109,5 @@ namespace MauiWebViewApp.ViewModels
 
             return isNeededUpdating;
         }
-
     }
 }

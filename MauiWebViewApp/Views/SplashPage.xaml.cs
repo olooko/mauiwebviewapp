@@ -2,9 +2,9 @@ using MauiWebViewApp.ViewModels;
 
 namespace MauiWebViewApp.Views;
 
-public partial class LoadingPage : ContentPage
+public partial class SplashPage : ContentPage
 {
-	public LoadingPage(LoadingPageViewModel viewModel)
+	public SplashPage(SplashPageViewModel viewModel)
 	{
 		InitializeComponent();
 

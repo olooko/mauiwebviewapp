@@ -1,11 +1,14 @@
-﻿namespace MauiWebViewApp.Views
+﻿using MauiWebViewApp.ViewModels;
+
+namespace MauiWebViewApp.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
+
+            this.BindingContext = viewModel;
         }
     }
-
 }
