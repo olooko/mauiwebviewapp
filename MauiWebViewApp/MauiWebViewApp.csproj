@@ -19,11 +19,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<SelfContained>true</SelfContained>
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+
 		<!-- Display name -->
 		<ApplicationTitle>MauiWebViewApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>xyz.companyname.mauiwebviewapp</ApplicationId>
+		<ApplicationId>xyz.olooko.mauiwebviewapp</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
