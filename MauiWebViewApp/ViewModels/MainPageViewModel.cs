@@ -21,7 +21,7 @@ namespace MauiWebViewApp.ViewModels
         [RelayCommand]
         private void Navigate()
         {
-            this.WebViewSource = "https://dotnet.microsoft.com/apps/maui";
+            this.WebViewSource = "https://webview.olooko.xyz";
         }
     }
 }
